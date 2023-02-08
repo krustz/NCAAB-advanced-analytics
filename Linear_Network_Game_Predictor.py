@@ -1,8 +1,8 @@
 #Cullen Wise
 #Linear_Network_Game_Predictor.py
 #using a linear nueral network to try and predict ncaab games final scores
-#Created 2/7/23 Last Modified 2/7/23
-#hours sunk [1]
+#Created 2/7/23 Last Modified 2/8/23
+#hours sunk [3]
 
 import torch
 import pandas as pd
@@ -54,3 +54,32 @@ class StatsData(Dataset):
     def __getitem(self, index):
         return self.WL[index], self.AEM[index], self.AOE[index], self.ADE[index], self.AT[index], self.Luck[index], self.SOSR[index], self.AAOEOO[index], self.AADEOO[index], self.NCSOSR[index]
     #length is constant at 363 so no need for method        
+
+
+
+#determining nodes in input hidden and output layers
+input_dim = 20
+hidden_dim_1 = 100
+hidden_dim_2 = 100
+output_dim = 2
+
+class LinearNetwork(nn.Module):
+    def __init__(self, input_dim, hidden_dim_1, hidden_dim_2, output_dim):
+        super(LinearNetwork, self).__init__()#properties from super class
+        self.layer_1 = nn.Linear(input_dim, hidden_dim_1)
+        nn.init.kaiming_uniform_(self.layer_1.weight, nonlinearity= "relu")
+        self.layer_2 = nn.Linear(hidden_dim_1, hidden_dim_2)
+        nn.init.kaiming_uniform_(self.layer_2.weight, nonlinearity= "relu")
+        self.layer_3 = nn.Linear(hidden_dim_2, output_dim)
+    
+    def forward(self, x):#forward propagating
+        #need to reasearch what to do here
+        return x
+    
+model = LinearNetwork(input_dim, hidden_dim_1, hidden_dim_2, output_dim)#making the model    
+print(model)
+#loss fn here
+        
+#training here
+        
+#testing here
