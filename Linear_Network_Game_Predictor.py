@@ -73,13 +73,17 @@ class LinearNetwork(nn.Module):
         self.layer_3 = nn.Linear(hidden_dim_2, output_dim)
     
     def forward(self, x):#forward propagating
-        #need to reasearch what to do here
+        x = torch.nn.functional.relu(self.layer_1(x))
+        x = torch.nn.functional.relu(self.layer_2(x))
+        x = torch.nn.functional.relu(self.layer_3(x))
+        #trying the linear activation (relu) to "get this off the ground" may change later
         return x
     
 model = LinearNetwork(input_dim, hidden_dim_1, hidden_dim_2, output_dim)#making the model    
-print(model)
-#loss fn here
-        
+#print(model)
+loss_fn = nn.MSELoss()
+#loss fn is chosen as mean squared here since our results should be closer to an n layred regression
+optimizer = torch.optim.Adam(model.parameters(), lr=.01, weight_decay=.0001)
 #training here
-        
+
 #testing here
