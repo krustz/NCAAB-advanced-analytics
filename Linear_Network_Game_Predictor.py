@@ -51,7 +51,7 @@ class StatsData(Dataset):
         self.AAOEOO = torch.from_numpy(AAOEOO.astype(np.float32))
         self.AADEOO = torch.from_numpy(AADEOO.astype(np.float32))
         self.NCSOSR = torch.from_numpy(NCSOSR.astype(np.float32))
-    def __getitem(self, index):
+    def __getitem__(self, index):
         return self.WL[index], self.AEM[index], self.AOE[index], self.ADE[index], self.AT[index], self.Luck[index], self.SOSR[index], self.AAOEOO[index], self.AADEOO[index], self.NCSOSR[index]
     #length is constant at 363 so no need for method        
 
