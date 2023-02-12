@@ -1,16 +1,20 @@
 #Cullen Wise
 #Linear_Network_Game_Predictor.py
 #using a linear nueral network to try and predict ncaab games final scores
-#Created 2/7/23 Last Modified 2/8/23
-#hours sunk [3]
+#Created 2/7/23 Last Modified 2/12/23
+#hours sunk [11]
 
 import torch
 import pandas as pd
 from torch.utils.data import Dataset, DataLoader
 from torch import nn
 from torch import optim
+import matplotlib.pyplot as plt
 import numpy as np
+import warnings
 
+# Ignore warnings
+warnings.filterwarnings("ignore")
 #first section of this is data management
 #bringing data in from csv's two classes most likely, games and stats
 
@@ -34,10 +38,10 @@ games_df = pd.read_csv('games\\scores1-31-23.csv')
 #variable shorthand 'T1' 'T2' 'T1S' 'T2S'
 
 #ALL dataframe variables are brought in as strings
-indexTest = stats_df[stats_df['Team']=='Alabama'].index.values
-print(indexTest)
-print(stats_df.loc[indexTest])
-print(stats_df['Team'])
+#indexTest = stats_df[stats_df['Team']=='Alabama'].index.values
+#print(indexTest)
+#print(stats_df.loc[indexTest])
+#print(stats_df['Team'])
 
 class StatsData(Dataset):
     def __init__(self, WL, AEM, AOE, ADE, AT, Luck, SOSR, AAOEOO, AADEOO, NCSOSR):
@@ -53,9 +57,18 @@ class StatsData(Dataset):
         self.NCSOSR = torch.from_numpy(NCSOSR.astype(np.float32))
     def __getitem__(self, index):
         return self.WL[index], self.AEM[index], self.AOE[index], self.ADE[index], self.AT[index], self.Luck[index], self.SOSR[index], self.AAOEOO[index], self.AADEOO[index], self.NCSOSR[index]
-    #length is constant at 363 so no need for method        
+    def __len__(self):
+        return self.len
 
-
+#dataset for game date ie the results of the games
+class GameData(Dataset):
+    def __init__(self, T1S, T2S):
+        self.T1S = torch.from_numpy(x.astype(np.float32))
+        self.T2S = torch.from_numpy(x.astype(np.float32))
+    def __getitem__(self, index):
+        return self.T1S[index], self.T2S[index]
+    def __len__(self):
+        return self.len
 
 #determining nodes in input hidden and output layers
 input_dim = 20
@@ -87,3 +100,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=.01, weight_decay=.0001)
 #training here
 
 #testing here
+games_dataset = GameData(csv_file = 'games\\scores1-31-23.csv')
+for i in range(len(games_dataset)):
+    print(i, ": ", games_dataset.__getitem__(i))
+    
