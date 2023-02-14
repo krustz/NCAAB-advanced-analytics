@@ -93,7 +93,7 @@ for index, row in games_df.iterrows():
     Team_1_Score = row['Team_1_Score']
     Team_2_Score = row['Team_2_Score']
     #adding game to df
-    compiled_df = compiled_df.append({'Team_1':Team_1, 'Team_2':Team_2, 'T1AEM':T1AEM, 'T2AEM':T2AEM, 'Team_1_Score':Team_1_Score, 'Team_2_Score':Team_2_Score,
+    compiled_df = compiled_df.append({'Date':Date, 'Team_1':Team_1, 'Team_2':Team_2, 'T1AEM':T1AEM, 'T2AEM':T2AEM, 'Team_1_Score':Team_1_Score, 'Team_2_Score':Team_2_Score,
                                       'T1AOE':T1AOE, 'T1ADE':T1ADE, 'T1AT':T1AT, 'T1Luck':T1Luck, 'T1SOSR':T1SOSR, 'T1AAOEOO':T1AAOEOO,
                                       'T1AADEOO':T1AADEOO, 'T1NCSOSR':T1NCSOSR, 'T2AOE':T2AOE, 'T2ADE':T2ADE, 'T2AT':T2AT, 'T2Luck':T2Luck,
                                       'T2SOSR':T2SOSR, 'T2AAOEOO':T2AAOEOO, 'T2AADEOO':T2AADEOO, 'T2NCSOSR':T2NCSOSR}, ignore_index=True)
