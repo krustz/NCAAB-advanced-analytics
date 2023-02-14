@@ -23,6 +23,51 @@ for index, row in games_df.iterrows():
     #finding indexes of teams
     index1 = stats_df[stats_df['Team']==row['Team_1']].index.values
     index2 = stats_df[stats_df['Team']==row['Team_2']].index.values
+
+    #if a team doesnt have a name that matches up this should fix it
+    if(not index1.any()):
+        
+        
+        if(row['Team_1']=='Miami (FL)'):
+            index1 = stats_df[stats_df['Team']=='Miami FL'].index.values
+        if(row['Team_1']=='Miami (OH)'):
+            index1 = stats_df[stats_df['Team']=='Miami OH'].index.values
+        if(row['Team_1']=='Central Mich.'):
+            index1 = stats_df[stats_df['Team']=='Central Michigan'].index.values
+        if(row['Team_1']=='NIU'):
+            index1 = stats_df[stats_df['Team']=='Northern Illinois'].index.values
+        if(row['Team_1']=='Western Mich.'):
+            index1 = stats_df[stats_df['Team']=='Western Michigan'].index.values
+        if(row['Team_1']=='Eastern Mich.'):
+            index1 = stats_df[stats_df['Team']=='Eastern Michigan'].index.values
+        if(row['Team_1']=='UConn'):
+            index1 = stats_df[stats_df['Team']=='Connecticut'].index.values
+        if(row['Team_1']=='Ole Miss'):
+            index1 = stats_df[stats_df['Team']=='Mississippi'].index.values
+      
+        
+    if(not index2.any()):
+ 
+        if(row['Team_2']=='Miami (FL)'): 
+            index2 = stats_df[stats_df['Team']=='Miami FL'].index.values
+        if(row['Team_2']=='Miami (OH)'):
+            index2 = stats_df[stats_df['Team']=='Miami OH'].index.values
+        if(row['Team_2']=='Central Mich.'):
+            index2 = stats_df[stats_df['Team']=='Central Michigan'].index.values
+        if(row['Team_2']=='NIU'):
+            index2 = stats_df[stats_df['Team']=='Northern Illinois'].index.values
+        if(row['Team_2']=='Western Mich.'):
+            index2 = stats_df[stats_df['Team']=='Western Michigan'].index.values
+        if(row['Team_2']=='Eastern Mich.'):
+            index2 = stats_df[stats_df['Team']=='Eastern Michigan'].index.values
+        if(row['Team_2']=='UConn'):
+            index2 = stats_df[stats_df['Team']=='Connecticut'].index.values
+        if(row['Team_2']=='Ole Miss'):
+            index2 = stats_df[stats_df['Team']=='Mississippi'].index.values
+
+        
+    print(row['Team_1'], ": ", index1, row['Team_2'], ": ",index2)
+    
     #assigning the stats to the teams for the game to append them to the dataframe
     Date  = '1-31-23' #naturally this will change a lot
     Team_1 = row['Team_1']
@@ -52,4 +97,4 @@ for index, row in games_df.iterrows():
                                       'T1AOE':T1AOE, 'T1ADE':T1ADE, 'T1AT':T1AT, 'T1Luck':T1Luck, 'T1SOSR':T1SOSR, 'T1AAOEOO':T1AAOEOO,
                                       'T1AADEOO':T1AADEOO, 'T1NCSOSR':T1NCSOSR, 'T2AOE':T2AOE, 'T2ADE':T2ADE, 'T2AT':T2AT, 'T2Luck':T2Luck,
                                       'T2SOSR':T2SOSR, 'T2AAOEOO':T2AAOEOO, 'T2AADEOO':T2AADEOO, 'T2NCSOSR':T2NCSOSR}, ignore_index=True)
-compiled_df.to_csv('compiled_stats\\cbbdata.csv', index=False)
+#compiled_df.to_csv('compiled_stats\\cbbdata.csv', index=False)
