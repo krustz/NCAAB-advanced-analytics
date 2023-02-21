@@ -16,7 +16,7 @@ compiled_df = pd.read_csv('compiled_stats\\cbbdata.csv')
 
 
 #these are the files made by the two web scrapers in this project and the names of files are sujbest to change
-games_df = pd.read_csv('games\\scores1-31-23.csv')
+games_df = pd.read_csv('games\\scores2-1-23.csv')
 stats_df = pd.read_csv('stats\\stats1-31-23.csv')
 
 for index, row in games_df.iterrows():
@@ -44,6 +44,44 @@ for index, row in games_df.iterrows():
             index1 = stats_df[stats_df['Team']=='Connecticut'].index.values
         if(row['Team_1']=='Ole Miss'):
             index1 = stats_df[stats_df['Team']=='Mississippi'].index.values
+
+        if(row['Team_1']=='UAlbany'):
+            index1 = stats_df[stats_df['Team']=='Albany'].index.values
+        if(row['Team_1']=='South Fla.'):
+            index1 = stats_df[stats_df['Team']=='South Florida'].index.values
+        if(row['Team_1']=='ETSU'):
+            index1 = stats_df[stats_df['Team']=='East Tennessee St.'].index.values
+        if(row['Team_1']=='Boston U.'):
+            index1 = stats_df[stats_df['Team']=='Boston University'].index.values
+        if(row['Team_1']=='Army West Point'):
+            index1 = stats_df[stats_df['Team']=='Army'].index.values
+        if(row['Team_1']=='Western Caro.'):
+            index1 = stats_df[stats_df['Team']=='Western Carolina'].index.values
+        if(row['Team_1']=='Gardner-Webb'):
+            index1 = stats_df[stats_df['Team']=='Gardner Webb'].index.values
+        if(row['Team_1']=='Charleston So.'):
+            index1 = stats_df[stats_df['Team']=='Albany'].index.values
+        if(row['Team_1']=='Sam Houston'):
+            index1 = stats_df[stats_df['Team']=='Sam Houston St.'].index.values
+        if(row['Team_1']=='UTRGV'):
+            index1 = stats_df[stats_df['Team']=='UT Rio Grande Valley'].index.values
+        if(row['Team_1']=='Southern Ill.'):
+            index1 = stats_df[stats_df['Team']=='Southern Illinois'].index.values
+        if(row['Team_1']=='UIC'):
+            index1 = stats_df[stats_df['Team']=='Illinois Chicago'].index.values
+        if(row['Team_1']=="St. John's (NY)"):
+            index1 = stats_df[stats_df['Team']=="St. John's"].index.values
+        if(row['Team_1']=='NC State'):
+            index1 = stats_df[stats_df['Team']=="N.C. State"].index.values
+        if(row['Team_1']=='UNI'):
+            index1 = stats_df[stats_df['Team']=='Northern Iowa'].index.values
+        if(row['Team_1']=='SFA'):
+            index1 = stats_df[stats_df['Team']=='Stephen F. Austin'].index.values
+        if(row['Team_1']=='California Baptist'):
+            index1 = stats_df[stats_df['Team']=='Cal Baptist'].index.values
+        if(row['Team_1']=='Seattle U'):
+            index1 = stats_df[stats_df['Team']=='Seattle'].index.values
+       
       
         
     if(not index2.any()):
@@ -65,11 +103,48 @@ for index, row in games_df.iterrows():
         if(row['Team_2']=='Ole Miss'):
             index2 = stats_df[stats_df['Team']=='Mississippi'].index.values
 
+        if(row['Team_2']=='UAlbany'):
+            index2 = stats_df[stats_df['Team']=='Albany'].index.values
+        if(row['Team_2']=='South Fla.'):
+            index2 = stats_df[stats_df['Team']=='South Florida'].index.values
+        if(row['Team_2']=='ETSU'):
+            index2 = stats_df[stats_df['Team']=='East Tennessee St.'].index.values
+        if(row['Team_2']=='Boston U.'):
+            index2 = stats_df[stats_df['Team']=='Boston University'].index.values
+        if(row['Team_2']=='Army West Point'):
+            index2 = stats_df[stats_df['Team']=='Army'].index.values
+        if(row['Team_2']=='Western Caro.'):
+            index2 = stats_df[stats_df['Team']=='Western Carolina'].index.values
+        if(row['Team_2']=='Gardner-Webb'):
+            index2 = stats_df[stats_df['Team']=='Gardner Webb'].index.values
+        if(row['Team_2']=='Charleston So.'):
+            index2 = stats_df[stats_df['Team']=='Albany'].index.values
+        if(row['Team_2']=='Sam Houston'):
+            index2 = stats_df[stats_df['Team']=='Sam Houston St.'].index.values
+        if(row['Team_2']=='UTRGV'):
+            index2 = stats_df[stats_df['Team']=='UT Rio Grande Valley'].index.values
+        if(row['Team_2']=='Southern Ill.'):
+            index2 = stats_df[stats_df['Team']=='Southern Illinois'].index.values
+        if(row['Team_2']=='UIC'):
+            index2 = stats_df[stats_df['Team']=='Illinois Chicago'].index.values
+        if(row['Team_2']=="St. John's (NY)"):
+            index2 = stats_df[stats_df['Team']=="St. John's"].index.values
+        if(row['Team_2']=='NC State'):
+            index2 = stats_df[stats_df['Team']=="N.C. State"].index.values
+        if(row['Team_2']=='UNI'):
+            index2 = stats_df[stats_df['Team']=='Northern Iowa'].index.values
+        if(row['Team_2']=='SFA'):
+            index2 = stats_df[stats_df['Team']=='Stephen F. Austin'].index.values
+        if(row['Team_2']=='California Baptist'):
+            index2 = stats_df[stats_df['Team']=='Cal Baptist'].index.values
+        if(row['Team_2']=='Seattle U'):
+            index2 = stats_df[stats_df['Team']=='Seattle'].index.values
+       
         
     print(row['Team_1'], ": ", index1, row['Team_2'], ": ",index2)
     
     #assigning the stats to the teams for the game to append them to the dataframe
-    Date  = '1-31-23' #naturally this will change a lot
+    Date  = '2-1-23' #naturally this will change a lot
     Team_1 = row['Team_1']
     Team_2 = row['Team_2']
     T1AEM = stats_df.iloc[index1]['Adjusted_Efficiency_Margin'].to_string(index=False)
