@@ -16,7 +16,7 @@ compiled_df = pd.read_csv('compiled_stats\\cbbdata.csv')
 
 
 #these are the files made by the two web scrapers in this project and the names of files are sujbest to change
-games_df = pd.read_csv('games\\scores2-2-23.csv')
+games_df = pd.read_csv('games\\scores2-4-23.csv')
 stats_df = pd.read_csv('stats\\stats1-31-23.csv')
 
 for index, row in games_df.iterrows():
@@ -170,7 +170,29 @@ for index, row in games_df.iterrows():
             index1 = stats_df[stats_df['Team']=="Saint Mary's"].index.values
         if(row['Team_1']=="Central Conn. St."):
             index1 = stats_df[stats_df['Team']=="Central Connecticut"].index.values
-     
+
+        if(row['Team_1']=='Grambling'):
+            index1 = stats_df[stats_df['Team']=='Grambling St.'].index.values
+        if(row['Team_1']=='Loyola Maryland'):
+            index1 = stats_df[stats_df['Team']=='Loyola MD'].index.values
+        if(row['Team_1']=='Ark.-Pine Bluff'):
+            index1 = stats_df[stats_df['Team']=='Arkansas Pine Bluff'].index.values
+        if(row['Team_1']=='Alcorn'):
+            index1 = stats_df[stats_df['Team']=='Alcorn St.'].index.values
+        if(row['Team_1']=='Tex. A&M-Commerce'):
+            index1 = stats_df[stats_df['Team']=='Texas A&M Commerce'].index.values
+        if(row['Team_1']=='Southern U.'):
+            index1 = stats_df[stats_df['Team']=='Southern'].index.values
+        if(row['Team_1']=='Bethune-Cookman'):
+            index1 = stats_df[stats_df['Team']=='Bethune-Cookman'].index.values
+        if(row['Team_1']=='Prairie View'):
+            index1 = stats_df[stats_df['Team']=='Prairie View A&M'].index.values
+        if(row['Team_1']=='Nicholls'):
+            index1 = stats_df[stats_df['Team']=='Nicholls St.'].index.values
+        if(row['Team_1']=='CSUN'):
+            index1 = stats_df[stats_df['Team']=='Cal St. Northridge'].index.values
+        if(row['Team_1']=='Mississippi Val.'):
+            index1 = stats_df[stats_df['Team']=='Mississippi Valley St.'].index.values
         
     if(not index2.any()):
  
@@ -314,13 +336,39 @@ for index, row in games_df.iterrows():
             index2 = stats_df[stats_df['Team']=="Saint Mary's"].index.values
         if(row['Team_2']=="Central Conn. St."):
             index2 = stats_df[stats_df['Team']=="Central Connecticut"].index.values
-       
-        #print(row['Team_1'], ": ", index1, row['Team_2'], ": ",index2)
+            
+        if(row['Team_2']=='Grambling'):
+            index2 = stats_df[stats_df['Team']=='Grambling St.'].index.values
+        if(row['Team_2']=='Loyola Maryland'):
+            index2 = stats_df[stats_df['Team']=='Loyola MD'].index.values
+        if(row['Team_2']=='Ark.-Pine Bluff'):
+            index2 = stats_df[stats_df['Team']=='Arkansas Pine Bluff'].index.values
+        if(row['Team_2']=='Alcorn'):
+            index2 = stats_df[stats_df['Team']=='Alcorn St.'].index.values
+        if(row['Team_2']=='Tex. A&M-Commerce'):
+            index2 = stats_df[stats_df['Team']=='Texas A&M Commerce'].index.values
+        if(row['Team_2']=='Southern U.'):
+            index2 = stats_df[stats_df['Team']=='Southern'].index.values
+        if(row['Team_2']=='Bethune-Cookman'):
+            index2 = stats_df[stats_df['Team']=='Bethune-Cookman'].index.values
+        if(row['Team_2']=='Prairie View'):
+            index2 = stats_df[stats_df['Team']=='Prairie View A&M'].index.values
+        if(row['Team_2']=='Nicholls'):
+            index2 = stats_df[stats_df['Team']=='Nicholls St.'].index.values
+        if(row['Team_2']=='CSUN'):
+            index2 = stats_df[stats_df['Team']=='Cal St. Northridge'].index.values
+        if(row['Team_2']=='Mississippi Val.'):
+            index2 = stats_df[stats_df['Team']=='Mississippi Valley St.'].index.values
+
+
+
+            
+    #print(row['Team_1'], ": ", index1, row['Team_2'], ": ",index2)
     
     if(index1.any() and index2.any()):
         print(row['Team_1'], ": ", index1, row['Team_2'], ": ",index2)
         #assigning the stats to the teams for the game to append them to the dataframe
-        Date  = '2-2-23' #naturally this will change a lot
+        Date  = '2-4-23' #naturally this will change a lot
         Team_1 = row['Team_1']
         Team_2 = row['Team_2']
         T1AEM = stats_df.iloc[index1]['Adjusted_Efficiency_Margin'].to_string(index=False)
