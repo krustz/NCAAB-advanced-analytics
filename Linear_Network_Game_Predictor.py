@@ -28,19 +28,31 @@ stats_df = pd.read_csv('compiled_stats\\cbbdata.csv')
 #variable shorthand 'WL' 'AEM' 'AOE' 'ADE' 'AT' 'Luck' 'SOSR' 'AAOEOO' 'AADEOO' 'NCSOSR'
 
 class StatsData(Dataset):
-    def __init__(self, WL, AEM, AOE, ADE, AT, Luck, SOSR, AAOEOO, AADEOO, NCSOSR):
-        self.WL = torch.from_numpy(WL.astype(np.float32))
-        self.AEM = torch.from_numpy(AEM.astype(np.float32))
-        self.AOE = torch.from_numpy(AOE.astype(np.float32))
-        self.ADE = torch.from_numpy(ADE.astype(np.float32))
-        self.AT = torch.from_numpy(AT.astype(np.float32))
-        self.Luck = torch.from_numpy(Luck.astype(np.float32))
-        self.SOSR = torch.from_numpy(SOSR.astype(np.float32))
-        self.AAOEOO = torch.from_numpy(AAOEOO.astype(np.float32))
-        self.AADEOO = torch.from_numpy(AADEOO.astype(np.float32))
-        self.NCSOSR = torch.from_numpy(NCSOSR.astype(np.float32))
+    def __init__(self, T1AEM,T1AOE,T1ADE,T1AT,T1Luck,T1SOSR,T1AAOEOO,T1AADEOO,T1NCSOSR,
+                 T2AEM,T2AOE,T2ADE,T2AT,T2Luck,T2SOSR,T2AAOEOO,T2AADEOO,T2NCSOSR): #,Team_1_Score,Team_2_Score
+        self.T1AEM = torch.from_numpy(T1AEM.astype(np.float32))
+        self.T1AOE = torch.from_numpy(T1AOE.astype(np.float32))
+        self.T1ADE = torch.from_numpy(T1ADE.astype(np.float32))
+        self.T1AT = torch.from_numpy(T1AT.astype(np.float32))
+        self.T1Luck = torch.from_numpy(T1Luck.astype(np.float32))
+        self.T1SOSR = torch.from_numpy(T1SOSR.astype(np.float32))
+        self.T1AAOEOO = torch.from_numpy(T1AAOEOO.astype(np.float32))
+        self.T1AADEOO = torch.from_numpy(T1AADEOO.astype(np.float32))
+        self.T1NCSOSR = torch.from_numpy(T1NCSOSR.astype(np.float32))
+        self.T2AEM = torch.from_numpy(T2AEM.astype(np.float32))
+        self.T2AOE = torch.from_numpy(T2AOE.astype(np.float32))
+        self.T2ADE = torch.from_numpy(T2ADE.astype(np.float32))
+        self.T2AT = torch.from_numpy(T2AT.astype(np.float32))
+        self.T2Luck = torch.from_numpy(T2Luck.astype(np.float32))
+        self.T2SOSR = torch.from_numpy(T2SOSR.astype(np.float32))
+        self.T2AAOEOO = torch.from_numpy(T2AAOEOO.astype(np.float32))
+        self.T2AADEOO = torch.from_numpy(T2AADEOO.astype(np.float32))
+        self.T2NCSOSR = torch.from_numpy(T2NCSOSR.astype(np.float32))
+        #not sure if i put scores here
+        
     def __getitem__(self, index):
-        return self.WL[index], self.AEM[index], self.AOE[index], self.ADE[index], self.AT[index], self.Luck[index], self.SOSR[index], self.AAOEOO[index], self.AADEOO[index], self.NCSOSR[index]
+        return self.T1AEM[index], self.T1AOE[index], self.T1ADE[index], self.T1AT[index], self.T1Luck[index], self.T1SOSR[index], self.T1AAOEOO[index], self.T1AADEOO[index], self.T1NCSOSR[index],
+    self.T2AEM[index], self.T2AOE[index], self.T2ADE[index], self.T2AT[index], self.T2Luck[index], self.T2SOSR[index], self.T2AAOEOO[index], self.T2AADEOO[index], self.T2NCSOSR[index]
     def __len__(self):
         return self.len
 
