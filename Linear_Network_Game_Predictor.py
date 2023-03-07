@@ -16,32 +16,16 @@ import warnings
 # Ignore warnings
 warnings.filterwarnings("ignore")
 #first section of this is data management
-#bringing data in from csv's two classes most likely, games and stats
+#bringing data in concatnated csv
 
-stats_df = pd.read_csv('stats\\stats1-31-23.csv')
+stats_df = pd.read_csv('compiled_stats\\cbbdata.csv')
 
-#variables in stats_df
+#variables in cbbdata.csv
 
-#'Rank', 'Team', 'Confrence', 'Win_Loss', 'Adjusted_Efficiency_Margin', 'Adjusted_Offensive_Efficency'
-#,'Adjusted_Defensive_Efficency', 'Adjusted_tempo', 'Luck', 'Strength_of_Schedule_Rating'
-#,'Adverage_Adjusted_Offensive_Efficency_of_Opponents','Adverage_Adjusted_Defensive_Efficency_of_Opponents',
-#'Non_Confrence_Strength_of_Schedule_Rating'
+#Date,Team_1,Team_2,T1AEM,T1AOE,T1ADE,T1AT,T1Luck,T1SOSR,T1AAOEOO,T1AADEOO,T1NCSOSR,
+#T2AEM,T2AOE,T2ADE,T2AT,T2Luck,T2SOSR,T2AAOEOO,T2AADEOO,T2NCSOSR,Team_1_Score,Team_2_Score
 
 #variable shorthand 'WL' 'AEM' 'AOE' 'ADE' 'AT' 'Luck' 'SOSR' 'AAOEOO' 'AADEOO' 'NCSOSR'
-
-games_df = pd.read_csv('games\\scores1-31-23.csv')
-
-#variables in stats_df
-
-#'Team_1', 'Team_2', 'Team_1_Score', 'Team_2_Score'
-
-#variable shorthand 'T1' 'T2' 'T1S' 'T2S'
-
-#ALL dataframe variables are brought in as strings
-#indexTest = stats_df[stats_df['Team']=='Alabama'].index.values
-#print(indexTest)
-#print(stats_df.loc[indexTest])
-#print(stats_df['Team'])
 
 class StatsData(Dataset):
     def __init__(self, WL, AEM, AOE, ADE, AT, Luck, SOSR, AAOEOO, AADEOO, NCSOSR):
