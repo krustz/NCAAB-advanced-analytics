@@ -44,21 +44,12 @@ class StatsData(Dataset):
     def __len__(self):
         return self.len
 
-#dataset for game date ie the results of the games
-class GameData(Dataset):
-    def __init__(self, T1S, T2S):
-        self.T1S = torch.from_numpy(x.astype(np.float32))
-        self.T2S = torch.from_numpy(x.astype(np.float32))
-    def __getitem__(self, index):
-        return self.T1S[index], self.T2S[index]
-    def __len__(self):
-        return self.len
 
 #determining nodes in input hidden and output layers
-input_dim = 20
+input_dim = 18 #statistical fields
 hidden_dim_1 = 100
 hidden_dim_2 = 100
-output_dim = 2
+output_dim = 2 #scores
 
 class LinearNetwork(nn.Module):
     def __init__(self, input_dim, hidden_dim_1, hidden_dim_2, output_dim):
@@ -84,7 +75,4 @@ optimizer = torch.optim.Adam(model.parameters(), lr=.01, weight_decay=.0001)
 #training here
 
 #testing here
-games_dataset = GameData(csv_file = 'games\\scores1-31-23.csv')
-for i in range(len(games_dataset)):
-    print(i, ": ", games_dataset.__getitem__(i))
-    
+
